@@ -1,0 +1,27 @@
+name = "website-monitoring"
+main = "src/workers/monitor.worker.ts"
+compatibility_date = "2023-12-23"
+
+[durable_objects]
+bindings = [
+  { name = "METRICS", class_name = "MetricsAggregator" }
+]
+
+[[r2_buckets]]
+binding = "METRICS_BUCKET"
+bucket_name = "monitoring-metrics"
+
+[[kv_namespaces]]
+binding = "METRICS_KV"
+id = "your-kv-namespace-id"
+
+[[queues]]
+binding = "PING_QUEUE"
+queue_name = "ping-results"
+
+[[queue_consumers]]
+queue = "ping-results"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "ping-results-dlq"

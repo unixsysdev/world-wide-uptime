@@ -1,0 +1,20 @@
+{
+  "name": "cloudflare-monitoring",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "pages:dev": "wrangler pages dev ./src/pages",
+    "pages:deploy": "wrangler pages deploy ./src/pages"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.10.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.22.1"
+  }
+}
